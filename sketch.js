@@ -1,6 +1,6 @@
 var canvas, backgroundImage;
 
-var gameState = 0,finishedPlayers;
+var gameState = 0,finishedPlayers=0;
 var playerCount;
 var allPlayers;
 var distance = 0;
@@ -19,6 +19,12 @@ var obsWidth,obsHeight;
 var sound;
 var ObstacleGroup
 
+var incidentata;
+
+var finishedPlayers;
+
+var bronz, gold, silver;
+
 function preload(){
   track = loadImage("../images/track.jpg");
   car1_img = loadImage("../images/car1.png");
@@ -27,6 +33,10 @@ function preload(){
   car4_img = loadImage("../images/car4.png");
   ground = loadImage("../images/ground.png");
   sound = loadSound('../sound/sliding.mp3');
+
+  bronz = loadImage("../images/bronze.png");
+  gold = loadImage("../images/gold.png");
+  silver= loadImage("../images/silver.png");
 
    imgF = loadImage("../images/f1.png");
 }
@@ -68,7 +78,7 @@ function draw(){
    background(200, 200, 255);
 
    //start the game
-   if (playerCount === 4 ) {
+   if (playerCount === 4 && finishedPlayers === 0 ) {
      game.update(1);
    }
  
@@ -76,6 +86,11 @@ function draw(){
    if (gameState === 1) {
      game.play();
    }
+
+   if(finishedPlayers === 4){
+     game.update(2);
+   }
+   
    if (gameState === 2) {
      console.log("End");
    }}
