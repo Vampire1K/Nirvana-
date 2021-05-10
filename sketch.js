@@ -91,8 +91,10 @@ function draw(){
      game.update(2);
    }
    
-   if (gameState === 2) {
-     console.log("End");
-   }}
+   if (gameState === 2 && finishedPlayers === 4 ) {
+    game.displayRanks();
+   }
+  
+  }
  
   
